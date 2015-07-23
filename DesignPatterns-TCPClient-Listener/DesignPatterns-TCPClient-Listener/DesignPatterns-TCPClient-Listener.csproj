@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientSide\Client.cs" />
+    <Compile Include="ClientSide\MyClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServerSide\Server.cs" />
+    <Compile Include="ServerSide\MyServerProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
