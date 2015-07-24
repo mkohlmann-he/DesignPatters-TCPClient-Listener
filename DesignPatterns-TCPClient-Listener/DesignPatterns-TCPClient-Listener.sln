@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns-TCPClient-Listener", "DesignPatterns-TCPClient-Listener\DesignPatterns-TCPClient-Listener.csproj", "{7B1F1033-9488-45C1-B181-930ECC1EFA39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns-TCP-ClientSpooler", "DesignPatterns-TCP-ClientSpooler\DesignPatterns-TCP-ClientSpooler.csproj", "{9470AE29-6A26-458C-8630-F4D0D95F62DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7B1F1033-9488-45C1-B181-930ECC1EFA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B1F1033-9488-45C1-B181-930ECC1EFA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B1F1033-9488-45C1-B181-930ECC1EFA39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9470AE29-6A26-458C-8630-F4D0D95F62DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9470AE29-6A26-458C-8630-F4D0D95F62DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9470AE29-6A26-458C-8630-F4D0D95F62DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9470AE29-6A26-458C-8630-F4D0D95F62DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

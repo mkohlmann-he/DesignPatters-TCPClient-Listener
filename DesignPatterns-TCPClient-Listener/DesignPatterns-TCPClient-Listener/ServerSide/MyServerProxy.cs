@@ -25,12 +25,86 @@ namespace DesignPatterns_TCPClient_Listener.ServerSide
 
 
 
-        async public Task run_async()
+        public void run()
+        {
+            SpoolUpListener("Listener1");
+            Task.Run(() => WaitForClient("Client1"));
+            Task.Run(() => WaitForClient("Client2"));
+            //Task.Run(() => WaitForClient("Client3"));
+            //WaitForClient("Client1");
+            Console.ReadLine();
+        }
+
+        public bool SpoolUpListener(string ListenerID)
         {
             try
             {
-                // create the TCP Listener
                 this.server = new TcpListener(this.localAddr, this.port);
+                this.server.Start();
+                return true;
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine("SocketException: {0}", e);
+                // Stop listening for new clients.
+                this.server.Stop();
+                return false;
+            }
+
+        }
+
+        async public Task WaitForClient(string ClientID)
+        {
+            Console.Write("\n{0} client listening for a connection", ClientID);
+            TcpClient Client = server.AcceptTcpClient();
+            
+            Console.WriteLine("\n{0} connected", ClientID);
+            NetworkStream ClientStream = Client.GetStream();
+  
+            while (Client.Connected)
+            {
+                while (ClientStream.DataAvailable)
+                {
+                    string Data = WaitForIncomingStream(ClientStream);
+                    char[] splitChar = new char[' '];
+                    string[] dataParse = Data.Split();
+                    Console.WriteLine("SERVER DEBUG WRITE: I Parsed and the Command word is: {0}", dataParse[1]);
+
+
+                }
+                System.Threading.Thread.Sleep(500);
+            }
+            Console.ReadLine();
+        }
+
+        public string WaitForIncomingStream(NetworkStream Stream)
+        {
+            try
+            {
+                Byte[] bytes = new Byte[256];
+                String data = null;
+                int streamLength;
+                streamLength = Stream.Read(bytes, 0, bytes.Length);
+                data = System.Text.Encoding.ASCII.GetString(bytes, 0, streamLength);
+                Console.WriteLine("\n{0}<<: ", data);
+                return data;
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine("SocketException: {0}", e);
+                // Stop listening for new clients.
+                this.server.Stop();
+                return null;
+            }
+        }
+
+
+        public void OriginalConnect()
+        {
+          
+            try
+            {
+                
 
                 // Start Listening for Client requests
                 this.server.Start();
@@ -94,5 +168,8 @@ namespace DesignPatterns_TCPClient_Listener.ServerSide
             Console.WriteLine("\nHit enter to Leave Server Loop...");
             Console.Read();
         }
+
+
+
     }
 }
